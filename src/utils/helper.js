@@ -41,4 +41,22 @@ const execProcess = async(process, args ) => {
 //       await execa('webpack-dev-server', ['--config=webpack/development.js'], { stdio: 'inherit' })
 //     }
 // }
-export { createDir, nodeProcess, execProcess };
+
+function writeToFile(path, data) {
+  data = data || CONFIG;
+  fs.writeFileSync(path, JSON.stringify(data, null, 4));
+}
+
+function isPluginPathExist(pathList, path) {
+  const checkPath = (obj) => obj.path === path;
+  return pathList.some(checkPath);
+}
+
+const createDir2 =(dir)=>{
+  console.log('dir',dir)
+  if (!fs.existsSync(dir)){
+      fs.mkdirSync(dir, { recursive: true });
+  }
+    
+}
+export { createDir, nodeProcess, execProcess, writeToFile, isPluginPathExist, createDir2 };
