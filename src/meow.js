@@ -1,10 +1,13 @@
 import chalk from 'chalk';
 import meow from 'meow';
-const {yellow} = chalk;
+
+const { yellow } = chalk;
+
 const meowHelp = `
   ${yellow(`--preload`)}     To preload the already defined set up
   ${yellow(`--no-preload`)}  It will ask you to setup manually
 `;
+
 const meowFlags = {
   importMeta: import.meta,
   flags: {
@@ -15,6 +18,7 @@ const meowFlags = {
     }
   }
 }
+
 export default meow(meowHelp, meowFlags);
 
 
