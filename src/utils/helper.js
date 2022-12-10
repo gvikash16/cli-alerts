@@ -33,6 +33,8 @@ const execProcess = async(process, args ) => {
 
     await execa(process, args.split(' '), { stdio: 'inherit' });
   } catch ({ stderr, exitCode }) {
+  // console.log('stderr', stderr);
+  throw new Error("Whoops!");
   }
 }
 // {

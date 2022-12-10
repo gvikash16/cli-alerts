@@ -2,17 +2,23 @@ import { execProcess, createDir2 } from '../utils/helper.js';
 
 const task = [
     {
-        title: 'Creating the direactorty ',
+        title: 'Creating the directory ',
         task: async () => {
             createDir2(process.env.CLIENT_BUILD_DIR)
         },
     }, {
-
         title: 'Clone the package',
         task: async () => {
-            // return { 'process': 'git', 'args': "clone https://github.com/github/training-kit.git" }
-            const projectPath = `${process.env.CLIENT_BUILD_DIR}/temp`;
-            await execProcess('git', `clone https://github.com/github/training-kit.git ${projectPath}`)
+            const repoLink = 'https://.com/sindresorhus/execa';
+            const splitted = repoLink.split('/');
+            const pathArray = splitted[splitted.length - 1].split('.');
+            const projectPath = `${process.env.CLIENT_BUILD_DIR}/${pathArray[0]}`;
+            try {
+                await execProcess('git', `clone ${repoLink} ${projectPath}`)
+            } catch (error) {
+                console.log('error', error);
+            }
+
         },
 
 
