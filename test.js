@@ -1,4 +1,3 @@
-// const alert = require('./index');
 import alert from './utils/alert.js';
 alert();
 alert({msg: 'Missing type'});
