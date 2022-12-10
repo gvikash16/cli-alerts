@@ -1,34 +1,19 @@
 {
-  "name": "cli-alerts",
+  "name": "e2e1",
   "version": "1.0.0",
-  "description": "This package will be used to alert the different types of messages to the user.",
   "main": "index.js",
   "type": "module",
+  "bin": {
+    "e2e1": "./src/index.js"
+  },
   "scripts": {
     "dev": "node ./src/index.js -p",
     "test": "node test.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gvikash16/cli-alerts.git"
-  },
-  "keywords": [
-    "cli",
-    "alerts",
-    "alerts",
-    "vikash-cli",
-    "alert",
-    "messages in cli"
-  ],
   "files": [
     "index.js"
   ],
   "author": "gvikash16",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/gvikash16/cli-alerts/issues"
-  },
-  "homepage": "https://github.com/gvikash16/cli-alerts#readme",
   "dependencies": {
     "chalk": "^5.1.2",
     "execa": "^6.1.0",
