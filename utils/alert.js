@@ -11,7 +11,7 @@ const alert = (options) => {
     log(`${sym.error} ${chalk.red.bold.underline(`ERROR`)} ${opt.msg}\n`);
   }
   if(opt.type==='success'){
-    log(`${sym.error} ${chalk.green.italic.underline(`SUCCESS`)} ${opt.msg}\n`);
+    log(`${sym.success} ${chalk.green.italic.underline(`SUCCESS`)} ${opt.msg}\n`);
   }
   if(opt.type==='warning'){
     log(`${sym.warning} ${chalk.yellow.italic.underline(`WARNING`)} ${opt.msg}\n`);

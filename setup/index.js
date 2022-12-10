@@ -1,12 +1,10 @@
 import tasks from './../tasks/index.js';
-import { execProcess } from './../utils/utils.js';
+import { execProcess } from '../utils/helper.js';
 
 const setup = () => {
-   tasks.forEach(({ title, task: { process, args } }) => {
-      // console.log('title', title);
-      // console.log('process', process);
-      // console.log('args', args);
-      execProcess(process,args)
+   tasks.forEach(async({ title, task: { process, args } }) => {
+      await execProcess(process,args)
+      console.log('dddd')
 
    })
 }

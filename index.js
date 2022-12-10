@@ -1,13 +1,12 @@
+import cli from './meow.js';
 import alert from './utils/alert.js';
 import setup from './setup/index.js';
-const preLoadJSON = process.argv.slice(2)[0];
-const input = process.argv.slice(2)[1];
-if (preLoadJSON) {
+const flags = cli.flags;
+if (flags.preload) {
+  alert({type: 'success', msg: `You can now trigger auto set up`});
   setup();
-}
-else if (input) {
-  console.log('input', input);
 } else {
   alert({ type: 'error', msg: 'You have not entered any flag or input' });
 }
+
 
