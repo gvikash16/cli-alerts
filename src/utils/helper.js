@@ -26,16 +26,19 @@ const nodeProcess = (str) => {
   child.stdout.pipe(process.stdout);
 }
 
-const execProcess = async(process, args ) => {
-  try {
-    // const subprocess = execa('git', ['clone','git@github.com:sfdc-www/next-wp.git']).stdout.pipe(process.stdout)
-    // await execa('git', ['clone', 'git@github.com:sindresorhus/execa'], { stdio: 'inherit' });
+const execProcess = async (process, args) => {
+  await execa(process, args.split(' '), { stdio: 'inherit' });
+  // try {
+  //   // const subprocess = execa('git', ['clone','git@github.com:sfdc-www/next-wp.git']).stdout.pipe(process.stdout)
+  //   // await execa('git', ['clone', 'git@github.com:sindresorhus/execa'], { stdio: 'inherit' });
 
-    await execa(process, args.split(' '), { stdio: 'inherit' });
-  } catch ({ stderr, exitCode }) {
-  // console.log('stderr', stderr);
-  throw new Error("Whoops!");
-  }
+  //   await execa(process, args.split(' '), { stdio: 'inherit' }).catch((err)=> {
+  //     throw err;
+  //   });
+  // } catch ({ stderr, exitCode }) {
+  //   // console.log('stderr', stderr);
+  //   throw Error("Whoops!");
+  // }
 }
 // {
 //     title: 'Starting webpack server',
@@ -54,11 +57,11 @@ function isPluginPathExist(pathList, path) {
   return pathList.some(checkPath);
 }
 
-const createDir2 =(dir)=>{
-  console.log('dir',dir)
-  if (!fs.existsSync(dir)){
-      fs.mkdirSync(dir, { recursive: true });
+const createDir2 = (dir) => {
+  console.log('dir', dir)
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
   }
-    
+
 }
 export { createDir, nodeProcess, execProcess, writeToFile, isPluginPathExist, createDir2 };

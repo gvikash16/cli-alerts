@@ -16,16 +16,18 @@ function setEnvVars(root, config) {
 }
 
 const setup = () => {
+   alert({type: 'info', msg: 'Loading from preset config'});
    const pathToScript = new URL('.', import.meta.url).pathname;
    // CLIENT_BUILD_DIR
    setEnvVars(pathToScript, config);
-   tasks.forEach(async ({ title, task }) => {
-      await task()
-      console.log('finish')
-
+   tasks.forEach(async ({ title, task, success, error }) => {
+      await task().catch((err)=> {
+         alert({type: 'error', msg: error});
+         throw err;
+      });
+      console.log('finish');
+      alert({type: 'success', msg: success});
    })
 }
-
-
 
 export default setup;
