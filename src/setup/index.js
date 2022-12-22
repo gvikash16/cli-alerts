@@ -1,9 +1,9 @@
 import tasks from './../tasks/index.js';
 import alert from '../utils/alert.js';
 import config from '../config/index.js';
-// alert({type: 'info', msg: 'Loading...'});
-// alert({type: 'success', msg: `Package cloning done`});
+import { createSpinner } from 'nanospinner';
 
+const spinner = createSpinner();
 
 function setEnvVars(root, config) {
    const home = process.env.HOME;
@@ -21,12 +21,16 @@ const setup = () => {
    // CLIENT_BUILD_DIR
    setEnvVars(pathToScript, config);
    tasks.forEach(async ({ title, task, success, error }) => {
-      await task().catch((err)=> {
+      try {
+         spinner.start()
+         await task();
+         alert({type: 'success', msg: title+' '+success});
+         spinner.reset();
+         // spinner.clear();
+      } catch(error) {
          alert({type: 'error', msg: error});
-         throw err;
-      });
-      console.log('finish');
-      alert({type: 'success', msg: success});
+         spinner.stop();
+      }
    })
 }
 

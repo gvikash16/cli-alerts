@@ -58,7 +58,7 @@ function isPluginPathExist(pathList, path) {
 }
 
 const createDir2 = (dir) => {
-  console.log('dir', dir)
+  // console.log('dir', dir)
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }

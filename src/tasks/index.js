@@ -3,7 +3,7 @@ import config from '../config/index.js';
 
 const task = [
     {
-        title: 'Creating the directory ',
+        title: 'Creating the directory',
         task: async () => {
             createDir2(process.env.CLIENT_BUILD_DIR)
         },
